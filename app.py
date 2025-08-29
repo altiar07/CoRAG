@@ -1,24 +1,17 @@
 from src.retriever import Retriever
 from src.generator import Generator
-from src.utils import load_text_file
-import glob
+from src.utils import load_documents_from_data
 
-# ===== Config =====
-MODEL_PATH = "models/Phi-3-mini-4k-instruct-q4.gguf"
+MODEL_PATH = "models/phi-3-mini-4k-instruct.Q4_K_M.gguf"
 
-# ===== Load Documents =====
-docs = []
-for file_path in glob.glob("data/*.txt"):
-    docs.extend(load_text_file(file_path))
+# ===== Load Documents (auto handles txt + pdf) =====
+docs = load_documents_from_data("data")
 
-# ===== Init Retriever & Index Documents =====
 retriever = Retriever()
 retriever.add_documents(docs)
 
-# ===== Load LLM Once =====
 generator = Generator(MODEL_PATH)
 
-# ===== Interactive Loop =====
 print("💬 RAG Chat Mode (type 'exit' to quit)\n")
 while True:
     question = input("You: ")
@@ -26,12 +19,8 @@ while True:
         print("👋 Goodbye!")
         break
 
-    # Retrieve relevant context
     retrieved_docs = retriever.retrieve(question)
     context = "\n".join(retrieved_docs)
 
-    # Generate answer
     answer = generator.generate(context, question)
-
-    # Display result
     print(f"AI: {answer}\n")

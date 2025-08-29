@@ -1,26 +1,51 @@
-# CoRAG Demo – Baseline RAG Implementation
+# 🧠 CoRAG: Chain-of-Retrieval Augmented Generation
 
-This repository contains the **baseline Retrieval-Augmented Generation (RAG)** pipeline that will be extended into a full **Chain-of-Retrieval Augmented Generation (CoRAG)** system.
-
-The goal is to demonstrate **multi-hop retrieval and reasoning** with a local LLM running on Apple Silicon (M1/M2) using [`llama-cpp-python`](https://github.com/abetlen/llama-cpp-python) and quantized GGUF models.
+A local Retrieval-Augmented Generation (RAG) pipeline, extended with **multi-hop retrieval (CoRAG)** to improve question answering accuracy.  
+Runs fully offline on your machine using **llama-cpp-python**, **SentenceTransformers**, and **FAISS**.
 
 ---
 
-## 📂 Project Structure
+## 🚀 Features
+- **Baseline RAG** (done)
+  - Embed documents with SentenceTransformers
+  - Retrieve top-k relevant chunks using FAISS
+  - Feed retrieved context into a local LLM (Phi-3 Mini)
+- **Interactive Chat Mode**
+  - Ask multiple questions in one session (model loads once)
+- **Concise Answers**
+  - No extra commentary or hallucinated Q&A
+- **Offline First**
+  - No API calls required; everything runs locally
 
-```plaintext
-corag-demo/
-│── data/                 # Sample docs (domain PDFs, txt files)
-│   └── sample_docs.txt
-│── models/               # Quantized GGUF model files
-│   └── phi-3-mini-4k-instruct.Q4_K_M.gguf
-│── notebooks/            # For experiments & prototyping
+---
+## 📂 Project Structure
+---
+
+CoRAG/
+│── data/ # Drop PDFs or .txt files here
+│── models/ # Quantized GGUF models (e.g., Phi-3 Mini)
 │── src/
-│   ├── retriever.py       # Document embedding & retrieval
-│   ├── generator.py       # LLM interface
-│   ├── corag_chain.py     # Multi-step retrieval logic (to be built)
-│   ├── evaluator.py       # Benchmark & evaluation functions
-│   └── utils.py           # Helper functions
-│── app.py                 # Streamlit/Gradio demo
-│── requirements.txt
-│── README.md
+│ ├── retriever.py # FAISS retriever (embeddings + search)
+│ ├── generator.py # Local LLM wrapper
+│ ├── utils.py # PDF/Text ingestion utilities
+│── app.py # Interactive chat entry point
+│── README.md # You are here 
+
+## ⚡ Quickstart
+
+### 1. Install
+```bash
+git clone <CoRAG>
+cd CoRAG
+pip install -r requirements.txt
+```
+
+### 2. Download model
+models/phi-3-mini-4k-instruct.Q4_K_M.gguf
+
+### 3. Add Data
+Drop .pdf or .txt into data/
+They are auto-ingested.
+
+### 4. Run
+python app.py

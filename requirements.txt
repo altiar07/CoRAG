@@ -5,3 +5,5 @@ sentence-transformers
 faiss-cpu
 llama-cpp-python
 streamlit
+pypdf
+tqdm>=4.65.0
