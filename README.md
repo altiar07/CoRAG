@@ -21,15 +21,6 @@ Runs fully offline on your machine using **llama-cpp-python**, **SentenceTransfo
 ## 📂 Project Structure
 ---
 
-CoRAG/
-│── data/ # Drop PDFs or .txt files here
-│── models/ # Quantized GGUF models (e.g., Phi-3 Mini)
-│── src/
-│ ├── retriever.py # FAISS retriever (embeddings + search)
-│ ├── generator.py # Local LLM wrapper
-│ ├── utils.py # PDF/Text ingestion utilities
-│── app.py # Interactive chat entry point
-│── README.md # You are here 
 
 ## ⚡ Quickstart
 
