@@ -1,11 +1,11 @@
-# 🧠 CoRAG: Chain-of-Retrieval Augmented Generation
+# CoRAG: Chain-of-Retrieval Augmented Generation
 
 A local Retrieval-Augmented Generation (RAG) pipeline, extended with **multi-hop retrieval (CoRAG)** to improve question answering accuracy.  
 Runs fully offline on your machine using **llama-cpp-python**, **SentenceTransformers**, and **FAISS**.
 
 ---
 
-## 🚀 Features
+## Features
 - **Baseline RAG** (done)
   - Embed documents with SentenceTransformers
   - Retrieve top-k relevant chunks using FAISS
@@ -18,11 +18,11 @@ Runs fully offline on your machine using **llama-cpp-python**, **SentenceTransfo
   - No API calls required; everything runs locally
 
 ---
-## 📂 Project Structure
+##  Project Structure
 ---
 
 
-## ⚡ Quickstart
+## Quickstart
 
 ### 1. Install
 ```bash
